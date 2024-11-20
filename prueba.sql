@@ -8,7 +8,7 @@ create table departamento (nombre_departamento VARCHAR(20) PRIMARY KEY, email VA
 DROP TABLE IF EXISTS empleado;
 create table empleado (dni VARCHAR(8) PRIMARY KEY, nombre VARCHAR(20), apellidos VARCHAR(20), email VARCHAR(30), telefono VARCHAR(9), direccion_emp VARCHAR(50), salario DOUBLE, departamento VARCHAR(20), FOREIGN KEY(departamento) REFERENCES departamento(nombre_departamento) ON DELETE CASCADE ON UPDATE CASCADE);
 DROP TABLE IF EXISTS producto;
-create table producto (nombre_producto VARCHAR(20), descripcion VARCHAR(30), tamaño_producto VARCHAR(20), tipo_papel VARCHAR(20), impresion VARCHAR(20), acabado VARCHAR(20), empleado VARCHAR(8), FOREIGN KEY(empleado) REFERENCES empleado(dni) ON DELETE CASCADE ON UPDATE CASCADE);
+create table producto (nombre_producto VARCHAR(20) PRIMARY KEY, descripcion VARCHAR(30), tamano_producto VARCHAR(20), tipo_papel VARCHAR(20), impresion VARCHAR(20), acabado VARCHAR(20), empleado VARCHAR(8), FOREIGN KEY(empleado) REFERENCES empleado(dni) ON DELETE CASCADE ON UPDATE CASCADE);
 DROP TABLE IF EXISTS factura;
 create table factura(n_factura INT PRIMARY KEY, pago VARCHAR(20), importe DOUBLE, envio VARCHAR(20), cliente VARCHAR(8), producto VARCHAR(20), FOREIGN KEY(cliente) REFERENCES cliente(nombre_cliente) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY(producto) REFERENCES producto(nombre_producto ON DELETE CASCADE ON UPDATE CASCADE);
 
